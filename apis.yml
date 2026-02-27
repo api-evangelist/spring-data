@@ -1,0 +1,115 @@
+name: Spring Data
+description: Spring Data's mission is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store.
+image: https://spring.io/img/projects/spring-data.svg
+url: https://spring.io/projects/spring-data
+created: '2024-01-15'
+modified: '2024-01-15'
+specificationVersion: '0.16'
+tags:
+- Spring
+- Data Access
+- JPA
+- MongoDB
+- Redis
+- REST
+- Database
+- ORM
+apis:
+- name: Spring Data REST
+  description: Exports Spring Data repositories as hypermedia-driven RESTful resources
+  image: https://spring.io/img/projects/spring-data.svg
+  humanUrl: https://spring.io/projects/spring-data-rest
+  baseUrl: http://localhost:8080
+  tags:
+  - REST
+  - HATEOAS
+  - Repository
+  properties:
+  - type: X-documentation
+    url: https://docs.spring.io/spring-data/rest/docs/current/reference/html/
+  - type: X-github
+    url: https://github.com/spring-projects/spring-data-rest
+  - type: X-api-definition
+    url: https://docs.spring.io/spring-data/rest/docs/current/api/
+  contact:
+  - FN: Spring Team
+    email: spring-data@pivotal.io
+    X-twitter: springcentral
+- name: Spring Data JPA
+  description: Simplifies the development of creating a JPA-based data access layer
+  image: https://spring.io/img/projects/spring-data.svg
+  humanUrl: https://spring.io/projects/spring-data-jpa
+  baseUrl: http://localhost:8080
+  tags:
+  - JPA
+  - Hibernate
+  - Repository
+  - Database
+  properties:
+  - type: X-documentation
+    url: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
+  - type: X-github
+    url: https://github.com/spring-projects/spring-data-jpa
+  - type: X-api-definition
+    url: https://docs.spring.io/spring-data/jpa/docs/current/api/
+  contact:
+  - FN: Spring Team
+    email: spring-data@pivotal.io
+    X-twitter: springcentral
+- name: Spring Data MongoDB
+  description: Spring-based programming model for MongoDB
+  image: https://spring.io/img/projects/spring-data.svg
+  humanUrl: https://spring.io/projects/spring-data-mongodb
+  baseUrl: http://localhost:8080
+  tags:
+  - MongoDB
+  - NoSQL
+  - Document Database
+  properties:
+  - type: X-documentation
+    url: https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/
+  - type: X-github
+    url: https://github.com/spring-projects/spring-data-mongodb
+  - type: X-api-definition
+    url: https://docs.spring.io/spring-data/mongodb/docs/current/api/
+  contact:
+  - FN: Spring Team
+    email: spring-data@pivotal.io
+    X-twitter: springcentral
+- name: Spring Data Redis
+  description: Easy configuration and access to Redis from Spring applications
+  image: https://spring.io/img/projects/spring-data.svg
+  humanUrl: https://spring.io/projects/spring-data-redis
+  baseUrl: http://localhost:8080
+  tags:
+  - Redis
+  - Cache
+  - Key-Value Store
+  properties:
+  - type: X-documentation
+    url: https://docs.spring.io/spring-data/redis/docs/current/reference/html/
+  - type: X-github
+    url: https://github.com/spring-projects/spring-data-redis
+  - type: X-api-definition
+    url: https://docs.spring.io/spring-data/redis/docs/current/api/
+  contact:
+  - FN: Spring Team
+    email: spring-data@pivotal.io
+    X-twitter: springcentral
+maintainers:
+- FN: Spring Team
+  email: spring-data@pivotal.io
+  X-twitter: springcentral
+  X-github: spring-projects
+common:
+- type: X-website
+  url: https://spring.io/projects/spring-data
+- type: X-blog
+  url: https://spring.io/blog/category/data
+- type: X-github-org
+  url: https://github.com/spring-projects
+- type: X-stack-overflow
+  url: https://stackoverflow.com/questions/tagged/spring-data
+- type: X-license
+  url: https://www.apache.org/licenses/LICENSE-2.0
+include: []

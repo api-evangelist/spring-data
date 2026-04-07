@@ -1,21 +1,19 @@
 name: Spring Data
-description: Spring Data's mission is to provide a familiar and consistent, 
-  Spring-based programming model for data access while still retaining the 
-  special traits of the underlying data store.
+description: Spring Data's mission is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store.
 image: https://spring.io/img/projects/spring-data.svg
 url: https://spring.io/projects/spring-data
 created: '2024-01-15'
 modified: '2026-03-16'
 specificationVersion: '0.16'
 tags:
-  - Spring
   - Data Access
+  - Database
   - JPA
   - MongoDB
+  - ORM
   - Redis
   - REST
-  - Database
-  - ORM
+  - Spring
 apis:
   - name: Spring Data REST
     description: >-
@@ -24,13 +22,12 @@ apis:
     humanUrl: https://spring.io/projects/spring-data-rest
     baseUrl: http://localhost:8080
     tags:
-      - REST
       - HATEOAS
       - Repository
+      - REST
     properties:
       - type: X-documentation
-        url: 
-          https://docs.spring.io/spring-data/rest/docs/current/reference/html/
+        url: https://docs.spring.io/spring-data/rest/docs/current/reference/html/
       - type: X-github
         url: https://github.com/spring-projects/spring-data-rest
       - type: X-api-definition
@@ -46,10 +43,10 @@ apis:
     humanUrl: https://spring.io/projects/spring-data-jpa
     baseUrl: http://localhost:8080
     tags:
-      - JPA
-      - Hibernate
-      - Repository
       - Database
+      - Hibernate
+      - JPA
+      - Repository
     properties:
       - type: X-documentation
         url: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
@@ -68,13 +65,12 @@ apis:
     humanUrl: https://spring.io/projects/spring-data-mongodb
     baseUrl: http://localhost:8080
     tags:
+      - Document Database
       - MongoDB
       - NoSQL
-      - Document Database
     properties:
       - type: X-documentation
-        url: 
-          https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/
+        url: https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/
       - type: X-github
         url: https://github.com/spring-projects/spring-data-mongodb
       - type: X-api-definition
@@ -90,13 +86,12 @@ apis:
     humanUrl: https://spring.io/projects/spring-data-redis
     baseUrl: http://localhost:8080
     tags:
-      - Redis
       - Cache
       - Key-Value Store
+      - Redis
     properties:
       - type: X-documentation
-        url: 
-          https://docs.spring.io/spring-data/redis/docs/current/reference/html/
+        url: https://docs.spring.io/spring-data/redis/docs/current/reference/html/
       - type: X-github
         url: https://github.com/spring-projects/spring-data-redis
       - type: X-api-definition

@@ -1,0 +1,492 @@
+openapi: 3.0.3
+info:
+  title: Spring Data REST API
+  description: >-
+    Spring Data REST exposes Spring Data repositories as hypermedia-driven
+    RESTful resources following the HATEOAS constraint. It provides automatic
+    endpoint generation for CRUD operations, pagination, sorting, projections,
+    and custom query endpoints derived from repository methods.
+  version: 4.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-data-rest
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+  - url: http://localhost:8080
+    description: Default local server
+paths:
+  /:
+    get:
+      operationId: listRepositories
+      summary: List All Exported Repositories
+      description: Returns the root resource listing all exported Spring Data REST endpoints
+      tags:
+        - Discovery
+      responses:
+        '200':
+          description: Root resource with links to all repositories
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/RootResource'
+  /profile:
+    get:
+      operationId: getProfile
+      summary: Get Application Profile
+      description: Returns the ALPS profile describing all resources and their affordances
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: ALPS profile document
+          content:
+            application/alps+json:
+              schema:
+                type: object
+  /profile/{resource}:
+    get:
+      operationId: getResourceProfile
+      summary: Get Resource Profile
+      description: Returns the ALPS profile for a specific repository resource
+      tags:
+        - Profile
+      parameters:
+        - name: resource
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Repository resource name (e.g., users, products)
+      responses:
+        '200':
+          description: Resource ALPS profile
+          content:
+            application/alps+json:
+              schema:
+                type: object
+  /{repository}:
+    get:
+      operationId: listResources
+      summary: List Repository Resources
+      description: Returns a paginated collection of resources from the repository
+      tags:
+        - Collection
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Repository resource path (e.g., users, orders)
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+          description: Zero-based page number
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+          description: Number of items per page
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+          description: 'Sort expression (e.g., name,asc or createdAt,desc)'
+      responses:
+        '200':
+          description: Paginated collection of resources
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/PagedResource'
+    post:
+      operationId: createResource
+      summary: Create Repository Resource
+      description: Creates a new resource in the repository
+      tags:
+        - Collection
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '201':
+          description: Resource created
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL of the newly created resource
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '400':
+          description: Validation error
+  /{repository}/{id}:
+    get:
+      operationId: getResource
+      summary: Get Repository Resource by ID
+      description: Returns a single resource by its identifier
+      tags:
+        - Item
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Resource found
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Resource not found
+    put:
+      operationId: replaceResource
+      summary: Replace Repository Resource
+      description: Replaces an existing resource entirely (full update)
+      tags:
+        - Item
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Resource updated
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Resource not found
+    patch:
+      operationId: patchResource
+      summary: Patch Repository Resource
+      description: Partially updates an existing resource
+      tags:
+        - Item
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+          application/merge-patch+json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Resource patched
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Resource not found
+    delete:
+      operationId: deleteResource
+      summary: Delete Repository Resource
+      description: Deletes a resource by its identifier
+      tags:
+        - Item
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Resource deleted
+        '404':
+          description: Resource not found
+  /{repository}/search:
+    get:
+      operationId: listSearchMethods
+      summary: List Search Methods
+      description: Returns all custom query methods exposed by the repository
+      tags:
+        - Search
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Search methods available
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/SearchResource'
+  /{repository}/search/{method}:
+    get:
+      operationId: executeSearchMethod
+      summary: Execute Repository Search Method
+      description: Executes a custom repository query method
+      tags:
+        - Search
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: method
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Query method name as exposed by the repository
+        - name: page
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - name: size
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 20
+        - name: sort
+          in: query
+          required: false
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/PagedResource'
+        '404':
+          description: Search method not found
+  /{repository}/{id}/{association}:
+    get:
+      operationId: getAssociation
+      summary: Get Resource Association
+      description: Returns the associated resource(s) for a given relationship
+      tags:
+        - Association
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: association
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Association name (e.g., address, orders)
+      responses:
+        '200':
+          description: Associated resource(s)
+          content:
+            application/hal+json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/Resource'
+                  - $ref: '#/components/schemas/PagedResource'
+        '404':
+          description: Resource or association not found
+    put:
+      operationId: setAssociation
+      summary: Set Resource Association
+      description: Replaces the association links for a resource
+      tags:
+        - Association
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: association
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          text/uri-list:
+            schema:
+              type: string
+              description: Newline-separated list of resource URIs
+      responses:
+        '204':
+          description: Association updated
+        '404':
+          description: Resource not found
+    delete:
+      operationId: deleteAssociation
+      summary: Delete Resource Association
+      description: Removes all association links for a resource
+      tags:
+        - Association
+      parameters:
+        - name: repository
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: association
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Association deleted
+        '404':
+          description: Resource not found
+components:
+  schemas:
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          description: The URI of the link
+        templated:
+          type: boolean
+          description: Whether the href is a URI template
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
+    Resource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'
+      additionalProperties: true
+    PagedResource:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Resource'
+        _links:
+          $ref: '#/components/schemas/Links'
+        page:
+          $ref: '#/components/schemas/PageMetadata'
+    PageMetadata:
+      type: object
+      properties:
+        size:
+          type: integer
+          description: Number of items per page
+        totalElements:
+          type: integer
+          description: Total number of items
+        totalPages:
+          type: integer
+          description: Total number of pages
+        number:
+          type: integer
+          description: Current page number (zero-based)
+    RootResource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'
+    SearchResource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'
+tags:
+  - name: Association
+  - name: Collection
+  - name: Discovery
+  - name: Item
+  - name: Profile
+  - name: Search

@@ -1,0 +1,64 @@
+{
+  "example": "List Repository Resources",
+  "description": "Example response from GET /{repository} listing users with HATEOAS links and pagination",
+  "request": {
+    "method": "GET",
+    "url": "http://localhost:8080/users?page=0&size=3&sort=name,asc",
+    "headers": {
+      "Accept": "application/hal+json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/hal+json"
+    },
+    "body": {
+      "_embedded": {
+        "users": [
+          {
+            "name": "Alice Smith",
+            "email": "alice@example.com",
+            "role": "ADMIN",
+            "_links": {
+              "self": { "href": "http://localhost:8080/users/1" },
+              "user": { "href": "http://localhost:8080/users/1" },
+              "address": { "href": "http://localhost:8080/users/1/address" }
+            }
+          },
+          {
+            "name": "Bob Jones",
+            "email": "bob@example.com",
+            "role": "USER",
+            "_links": {
+              "self": { "href": "http://localhost:8080/users/2" },
+              "user": { "href": "http://localhost:8080/users/2" }
+            }
+          },
+          {
+            "name": "Carol White",
+            "email": "carol@example.com",
+            "role": "USER",
+            "_links": {
+              "self": { "href": "http://localhost:8080/users/3" },
+              "user": { "href": "http://localhost:8080/users/3" }
+            }
+          }
+        ]
+      },
+      "_links": {
+        "first": { "href": "http://localhost:8080/users?page=0&size=3&sort=name,asc" },
+        "self": { "href": "http://localhost:8080/users?page=0&size=3&sort=name,asc" },
+        "next": { "href": "http://localhost:8080/users?page=1&size=3&sort=name,asc" },
+        "last": { "href": "http://localhost:8080/users?page=3&size=3&sort=name,asc" },
+        "profile": { "href": "http://localhost:8080/profile/users" }
+      },
+      "page": {
+        "size": 3,
+        "totalElements": 12,
+        "totalPages": 4,
+        "number": 0
+      }
+    }
+  }
+}

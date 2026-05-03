@@ -1,0 +1,124 @@
+name: Spring Data Vocabulary
+description: Domain vocabulary for Spring Data framework including data access patterns, repository abstractions, and REST hypermedia concepts
+version: 4.3.0
+created: '2026-05-02'
+modified: '2026-05-02'
+terms:
+  - term: Repository
+    definition: A Spring abstraction that provides data access operations for a domain type, eliminating boilerplate data access code
+    related:
+      - CrudRepository
+      - JpaRepository
+      - MongoRepository
+    tags:
+      - Core
+      - Pattern
+
+  - term: CrudRepository
+    definition: Spring Data interface providing CRUD (Create, Read, Update, Delete) operations for entities of a specific type
+    related:
+      - Repository
+      - PagingAndSortingRepository
+    tags:
+      - Core
+      - CRUD
+
+  - term: JpaRepository
+    definition: JPA-specific extension of PagingAndSortingRepository providing JPA-related methods like flush and batch inserts
+    related:
+      - Repository
+      - CrudRepository
+    tags:
+      - JPA
+      - Persistence
+
+  - term: HATEOAS
+    definition: Hypermedia As The Engine Of Application State — constraint where clients navigate APIs via links in responses
+    related:
+      - HAL
+      - Spring Data REST
+    tags:
+      - REST
+      - Hypermedia
+
+  - term: HAL
+    definition: Hypertext Application Language — a JSON format for representing hypermedia APIs with _links and _embedded structures
+    related:
+      - HATEOAS
+      - HAL+JSON
+    tags:
+      - Hypermedia
+      - REST
+
+  - term: Projection
+    definition: Spring Data REST mechanism to expose a subset of or transformed view of a domain entity through the REST API
+    related:
+      - Repository
+      - Spring Data REST
+    tags:
+      - REST
+      - Querying
+
+  - term: Query Derivation
+    definition: Spring Data mechanism that parses repository method names to automatically generate database queries
+    related:
+      - Repository
+      - Named Query
+    tags:
+      - Core
+      - Querying
+
+  - term: Specification
+    definition: JPA Criteria API-based type-safe way to define reusable and composable query predicates
+    related:
+      - JpaRepository
+      - Criteria API
+    tags:
+      - JPA
+      - Querying
+
+  - term: Auditing
+    definition: Spring Data feature that automatically tracks entity creation and modification timestamps and authors
+    related:
+      - @CreatedDate
+      - "@LastModifiedBy"
+    tags:
+      - Core
+      - Metadata
+
+  - term: Pagination
+    definition: Mechanism for splitting large query results into pages using Pageable request and Page response types
+    related:
+      - Pageable
+      - PageRequest
+      - Slice
+    tags:
+      - Core
+      - REST
+
+  - term: Association
+    definition: In Spring Data REST, a HAL link representing a relationship between two repository resources
+    related:
+      - HATEOAS
+      - HAL
+    tags:
+      - REST
+      - Relationship
+
+  - term: EntityLinks
+    definition: Spring HATEOAS component for building links to Spring Data REST resource URIs programmatically
+    related:
+      - HATEOAS
+      - Link
+    tags:
+      - REST
+      - Hypermedia
+
+  - term: RepositoryRestController
+    definition: Spring Data REST annotation for adding custom endpoints alongside auto-generated repository endpoints
+    related:
+      - Spring Data REST
+      - Repository
+    tags:
+      - Extension
+      - REST

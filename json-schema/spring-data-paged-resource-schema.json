@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://spring.io/projects/spring-data/schemas/paged-resource",
+  "title": "Spring Data Paged Resource",
+  "description": "Represents a paginated HAL+JSON collection response from Spring Data REST",
+  "type": "object",
+  "properties": {
+    "_embedded": {
+      "type": "object",
+      "description": "Embedded resources keyed by relation type",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/HalResource"
+        }
+      }
+    },
+    "_links": {
+      "$ref": "#/definitions/HalLinks"
+    },
+    "page": {
+      "$ref": "#/definitions/PageMetadata"
+    }
+  },
+  "definitions": {
+    "HalLink": {
+      "type": "object",
+      "required": ["href"],
+      "properties": {
+        "href": {
+          "type": "string",
+          "description": "The URI or URI template of the link"
+        },
+        "templated": {
+          "type": "boolean",
+          "description": "Whether href is a URI template"
+        },
+        "type": {
+          "type": "string",
+          "description": "Expected media type of target resource"
+        },
+        "deprecation": {
+          "type": "string",
+          "description": "URL indicating this link is deprecated"
+        },
+        "name": {
+          "type": "string",
+          "description": "Secondary key for link selection"
+        },
+        "profile": {
+          "type": "string",
+          "description": "URI that hints about the profile of the target resource"
+        },
+        "title": {
+          "type": "string",
+          "description": "Human-readable label for the link destination"
+        }
+      }
+    },
+    "HalLinks": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "$ref": "#/definitions/HalLink"
+        },
+        "first": {
+          "$ref": "#/definitions/HalLink"
+        },
+        "prev": {
+          "$ref": "#/definitions/HalLink"
+        },
+        "next": {
+          "$ref": "#/definitions/HalLink"
+        },
+        "last": {
+          "$ref": "#/definitions/HalLink"
+        }
+      },
+      "additionalProperties": {
+        "oneOf": [
+          { "$ref": "#/definitions/HalLink" },
+          {
+            "type": "array",
+            "items": { "$ref": "#/definitions/HalLink" }
+          }
+        ]
+      }
+    },
+    "HalResource": {
+      "type": "object",
+      "properties": {
+        "_links": {
+          "$ref": "#/definitions/HalLinks"
+        }
+      },
+      "additionalProperties": true
+    },
+    "PageMetadata": {
+      "type": "object",
+      "properties": {
+        "size": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Number of items per page"
+        },
+        "totalElements": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of elements across all pages"
+        },
+        "totalPages": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total number of pages"
+        },
+        "number": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Current page number (zero-based)"
+        }
+      },
+      "required": ["size", "totalElements", "totalPages", "number"]
+    }
+  }
+}

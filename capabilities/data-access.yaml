@@ -1,0 +1,201 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Spring Data REST - Data Access"
+  description: >-
+    Workflow capability for Spring Data REST data access operations. Provides
+    unified CRUD and query access to any Spring Data repository over HAL+JSON.
+    Used by application developers and API consumers to manage data entities
+    through auto-exposed repository endpoints.
+  tags:
+    - Data Access
+    - HATEOAS
+    - Hypermedia
+    - REST
+    - Spring
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SPRING_DATA_BASE_URL: SPRING_DATA_BASE_URL
+      SPRING_DATA_TOKEN: SPRING_DATA_TOKEN
+
+capability:
+  consumes:
+    - import: spring-data-rest
+      location: ./shared/spring-data-rest.yaml
+
+  exposes:
+    - type: rest
+      port: 8080
+      namespace: data-access-api
+      description: "Unified REST API for Spring Data repository access."
+      resources:
+        - path: /v1/repositories
+          name: repository-discovery
+          description: "Discover all available Spring Data REST repositories"
+          operations:
+            - method: GET
+              name: list-repositories
+              description: "List all exported repositories in the application"
+              call: "spring-data-rest.list-repositories"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/{repository}
+          name: repository-collection
+          description: "Access a repository collection"
+          operations:
+            - method: GET
+              name: list-resources
+              description: "List resources with pagination and sorting"
+              call: "spring-data-rest.list-resources"
+              with:
+                repository: "rest.repository"
+                page: "rest.page"
+                size: "rest.size"
+                sort: "rest.sort"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-resource
+              description: "Create a new entity in the repository"
+              call: "spring-data-rest.create-resource"
+              with:
+                repository: "rest.repository"
+                payload: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/{repository}/{id}
+          name: repository-item
+          description: "Access individual repository entities"
+          operations:
+            - method: GET
+              name: get-resource
+              description: "Retrieve a specific entity by ID"
+              call: "spring-data-rest.get-resource"
+              with:
+                repository: "rest.repository"
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-resource
+              description: "Delete an entity from the repository"
+              call: "spring-data-rest.delete-resource"
+              with:
+                repository: "rest.repository"
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/{repository}/search/{method}
+          name: repository-search
+          description: "Execute repository query methods"
+          operations:
+            - method: GET
+              name: search-repository
+              description: "Run a repository-defined query"
+              call: "spring-data-rest.execute-search"
+              with:
+                repository: "rest.repository"
+                method: "rest.method"
+                page: "rest.page"
+                size: "rest.size"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9090
+      namespace: data-access-mcp
+      transport: http
+      description: "MCP server for AI-assisted Spring Data repository operations."
+      tools:
+        - name: discover-repositories
+          description: "Discover all Spring Data REST repositories available in the running application"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-data-rest.list-repositories"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-entities
+          description: "List entities from a Spring Data repository with pagination and sorting"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-data-rest.list-resources"
+          with:
+            repository: "tools.repository"
+            page: "tools.page"
+            size: "tools.size"
+            sort: "tools.sort"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-entity
+          description: "Retrieve a specific entity from a repository by its ID"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "spring-data-rest.get-resource"
+          with:
+            repository: "tools.repository"
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-entity
+          description: "Create a new entity in a Spring Data repository"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "spring-data-rest.create-resource"
+          with:
+            repository: "tools.repository"
+            payload: "tools.payload"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: delete-entity
+          description: "Delete an entity from a Spring Data repository by ID"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "spring-data-rest.delete-resource"
+          with:
+            repository: "tools.repository"
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-entities
+          description: "Execute a custom query method on a Spring Data repository"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-data-rest.execute-search"
+          with:
+            repository: "tools.repository"
+            method: "tools.method"
+            page: "tools.page"
+            size: "tools.size"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,70 @@
+extends: spectral:oas
+rules:
+  spring-data-hal-content-type:
+    description: Spring Data REST endpoints should accept/produce application/hal+json
+    message: "{{description}}. Found: {{value}}"
+    severity: warn
+    given: "$.paths[*][*].responses[*].content"
+    then:
+      field: "application/hal+json"
+      function: truthy
+
+  spring-data-pageable-parameters:
+    description: Collection endpoints should support page, size, and sort query parameters
+    message: "Collection GET operations should include page, size, and sort parameters"
+    severity: info
+    given: "$.paths[*].get"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+
+  spring-data-rest-operation-ids:
+    description: All operations must have a unique operationId
+    message: "Operation is missing operationId"
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  spring-data-rest-tags:
+    description: Operations must include at least one tag using Title Case
+    message: "Operation must have tags"
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  spring-data-no-trailing-slashes:
+    description: API paths must not have trailing slashes
+    message: "Path {{path}} has a trailing slash"
+    severity: warn
+    given: "$.paths"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "/$"
+
+  spring-data-hateoas-links:
+    description: Resource schemas should include _links property for HATEOAS compliance
+    message: "Resource schemas should define _links property"
+    severity: info
+    given: "$.components.schemas[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+
+  spring-data-rest-summaries-title-case:
+    description: Operation summaries must use Title Case
+    message: "Summary '{{value}}' should use Title Case"
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"

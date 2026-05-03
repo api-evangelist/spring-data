@@ -1,0 +1,57 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "spring": "https://spring.io/vocab/",
+    "springdata": "https://spring.io/projects/spring-data/vocab/",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+
+    "repository": {
+      "@id": "springdata:repository",
+      "@type": "@id"
+    },
+    "entity": {
+      "@id": "springdata:entity",
+      "@type": "@id"
+    },
+    "dataStore": {
+      "@id": "springdata:dataStore",
+      "@type": "@id"
+    },
+
+    "HalResource": {
+      "@id": "springdata:HalResource",
+      "@type": "@id"
+    },
+    "PagedResource": {
+      "@id": "springdata:PagedResource",
+      "@type": "@id"
+    },
+    "Link": {
+      "@id": "springdata:Link",
+      "@type": "@id"
+    },
+
+    "href": { "@id": "springdata:href" },
+    "templated": { "@id": "springdata:templated" },
+    "rel": { "@id": "springdata:rel" },
+
+    "page": { "@id": "springdata:page" },
+    "totalElements": { "@id": "springdata:totalElements" },
+    "totalPages": { "@id": "springdata:totalPages" },
+    "number": { "@id": "springdata:number" },
+    "size": { "@id": "springdata:size" },
+
+    "sort": { "@id": "springdata:sort" },
+    "projection": { "@id": "springdata:projection" },
+
+    "SoftwareSourceCode": "schema:SoftwareSourceCode",
+    "SoftwareApplication": "schema:SoftwareApplication",
+    "programmingLanguage": "schema:programmingLanguage",
+    "runtimePlatform": "schema:runtimePlatform",
+    "codeRepository": "schema:codeRepository"
+  }
+}

@@ -1,0 +1,347 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Spring Data REST"
+  description: "Hypermedia-driven RESTful repository exposure for Spring Data. Provides CRUD and search operations over Spring Data repositories via HAL+JSON."
+  tags:
+    - Data Access
+    - HATEOAS
+    - REST
+    - Spring
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      SPRING_DATA_BASE_URL: SPRING_DATA_BASE_URL
+
+capability:
+  consumes:
+    - type: http
+      namespace: spring-data-rest
+      baseUri: "{{env.SPRING_DATA_BASE_URL}}"
+      description: "Spring Data REST HAL+JSON repository endpoints"
+      authentication:
+        type: bearer
+        token: "{{SPRING_DATA_TOKEN}}"
+      resources:
+        - name: repositories
+          path: /
+          description: "Root resource listing all exported repositories"
+          operations:
+            - name: list-repositories
+              method: GET
+              description: "List all exported Spring Data REST repositories"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: collection
+          path: "/{repository}"
+          description: "Repository collection operations"
+          operations:
+            - name: list-resources
+              method: GET
+              description: "List repository resources with pagination"
+              inputParameters:
+                - name: repository
+                  in: path
+                  type: string
+                  required: true
+                  description: "Repository resource name"
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Zero-based page number"
+                - name: size
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Items per page"
+                - name: sort
+                  in: query
+                  type: string
+                  required: false
+                  description: "Sort expression"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-resource
+              method: POST
+              description: "Create a new repository resource"
+              inputParameters:
+                - name: repository
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  payload: "{{tools.payload}}"
+        - name: item
+          path: "/{repository}/{id}"
+          description: "Individual repository resource operations"
+          operations:
+            - name: get-resource
+              method: GET
+              description: "Get a repository resource by ID"
+              inputParameters:
+                - name: repository
+                  in: path
+                  type: string
+                  required: true
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-resource
+              method: PUT
+              description: "Replace a repository resource"
+              inputParameters:
+                - name: repository
+                  in: path
+                  type: string
+                  required: true
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              body:
+                type: json
+                data:
+                  payload: "{{tools.payload}}"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-resource
+              method: DELETE
+              description: "Delete a repository resource"
+              inputParameters:
+                - name: repository
+                  in: path
+                  type: string
+                  required: true
+                - name: id
+                  in: path
+                  type: string
+                  required: true
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: search
+          path: "/{repository}/search/{method}"
+          description: "Repository custom query methods"
+          operations:
+            - name: execute-search
+              method: GET
+              description: "Execute a derived repository query method"
+              inputParameters:
+                - name: repository
+                  in: path
+                  type: string
+                  required: true
+                - name: method
+                  in: path
+                  type: string
+                  required: true
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                - name: size
+                  in: query
+                  type: integer
+                  required: false
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: spring-data-rest-api
+      resources:
+        - path: /v1/repositories
+          name: repositories
+          description: "List all exported Spring Data repositories"
+          operations:
+            - method: GET
+              name: list-repositories
+              description: "Discover available repository endpoints"
+              call: "spring-data-rest.list-repositories"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/{repository}
+          name: collection
+          description: "Repository collection resource"
+          operations:
+            - method: GET
+              name: list-resources
+              description: "List resources in a repository with pagination"
+              call: "spring-data-rest.list-resources"
+              with:
+                repository: "rest.repository"
+                page: "rest.page"
+                size: "rest.size"
+                sort: "rest.sort"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: POST
+              name: create-resource
+              description: "Create a new resource in the repository"
+              call: "spring-data-rest.create-resource"
+              with:
+                repository: "rest.repository"
+                payload: "rest.body"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/{repository}/{id}
+          name: item
+          description: "Individual repository resource"
+          operations:
+            - method: GET
+              name: get-resource
+              description: "Retrieve a specific repository resource by ID"
+              call: "spring-data-rest.get-resource"
+              with:
+                repository: "rest.repository"
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+            - method: DELETE
+              name: delete-resource
+              description: "Delete a repository resource"
+              call: "spring-data-rest.delete-resource"
+              with:
+                repository: "rest.repository"
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+        - path: /v1/{repository}/search/{method}
+          name: search
+          description: "Execute repository query methods"
+          operations:
+            - method: GET
+              name: execute-search
+              description: "Run a derived query method"
+              call: "spring-data-rest.execute-search"
+              with:
+                repository: "rest.repository"
+                method: "rest.method"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: spring-data-rest-mcp
+      transport: http
+      tools:
+        - name: list-repositories
+          description: "List all Spring Data REST repositories available in the application"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-data-rest.list-repositories"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: list-resources
+          description: "List resources from a Spring Data repository with pagination support"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-data-rest.list-resources"
+          with:
+            repository: "tools.repository"
+            page: "tools.page"
+            size: "tools.size"
+            sort: "tools.sort"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: get-resource
+          description: "Get a specific resource from a Spring Data repository by its ID"
+          hints:
+            readOnly: true
+            openWorld: false
+          call: "spring-data-rest.get-resource"
+          with:
+            repository: "tools.repository"
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: create-resource
+          description: "Create a new resource in a Spring Data repository"
+          hints:
+            readOnly: false
+            destructive: false
+          call: "spring-data-rest.create-resource"
+          with:
+            repository: "tools.repository"
+            payload: "tools.payload"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: delete-resource
+          description: "Delete a resource from a Spring Data repository"
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: "spring-data-rest.delete-resource"
+          with:
+            repository: "tools.repository"
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+
+        - name: search-repository
+          description: "Execute a derived query method on a Spring Data repository"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "spring-data-rest.execute-search"
+          with:
+            repository: "tools.repository"
+            method: "tools.method"
+            page: "tools.page"
+            size: "tools.size"
+          outputParameters:
+            - type: object
+              mapping: "$."

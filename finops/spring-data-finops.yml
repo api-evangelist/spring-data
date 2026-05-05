@@ -1,0 +1,192 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+provider: Spring Data
+providerId: spring-data
+publisherName: Spring Data
+serviceCategory: API
+created: '2026-05-04'
+modified: '2026-05-04'
+tags:
+  - Data Access
+  - Database
+  - Framework
+  - Java
+  - JPA
+  - MongoDB
+  - ORM
+  - Redis
+  - REST
+  - Spring
+  - FinOps
+  - Cost Management
+  - FOCUS
+description: FinOps framework definition for the Spring Data API surface. Provides a FOCUS-aligned mapping
+  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+principles:
+  - name: Visibility
+    description: Make API consumption costs visible to engineering, product, and finance teams in near
+      real-time.
+  - name: Allocation
+    description: Tag every chargeable API call with the consuming team, environment, application, and
+      feature so cost can be allocated.
+  - name: Optimization
+    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
+      cost per useful unit of work.
+  - name: Accountability
+    description: Establish budget owners and chargeback or showback flows for each consuming team.
+domains:
+  - name: Understand Usage and Cost
+    capabilities:
+      - Data Ingestion
+      - Allocation
+      - Reporting and Analytics
+      - Anomaly Management
+  - name: Quantify Business Value
+    capabilities:
+      - Planning and Estimating
+      - Forecasting
+      - Budgeting
+      - Benchmarking
+      - Unit Economics
+  - name: Optimize Usage and Cost
+    capabilities:
+      - Architecting for Cloud
+      - Rate Optimization
+      - Workload Optimization
+      - Cloud Sustainability
+      - Licensing and SaaS
+  - name: Manage the FinOps Practice
+    capabilities:
+      - FinOps Practice Operations
+      - FinOps Education and Enablement
+      - Invoicing and Chargeback
+      - Onboarding Workloads
+      - Intersecting Disciplines
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  chargeFrequency: Recurring
+focusColumns:
+  ServiceName: Spring Data
+  ServiceCategory: Developer Tools / API
+  ProviderName: Spring Data
+  PublisherName: Spring Data
+  InvoiceIssuerName: Spring Data
+  PricingCategory: Usage-Based
+  PricingUnit: request
+  BillingCurrency: USD
+  ChargeCategory: Usage
+meters:
+  - name: api_requests
+    description: Count of billable API requests
+    unit: request
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+      - region
+      - consumer
+  - name: data_egress
+    description: Bytes returned over the network in API responses
+    unit: GB
+    aggregation: sum
+    dimensions:
+      - api
+      - region
+      - consumer
+  - name: compute_seconds
+    description: Server-side compute consumed by the request, where applicable
+    unit: second
+    aggregation: sum
+    dimensions:
+      - api
+      - endpoint
+      - tier
+apis:
+  - name: Spring Data REST
+    baseURL: http://localhost:8080
+    tags:
+      - HATEOAS
+      - HAL
+      - Hypermedia
+      - Repository
+      - REST
+    serviceName: Spring Data REST
+    serviceCategory: API
+  - name: Spring Data JPA
+    baseURL: http://localhost:8080
+    tags:
+      - Database
+      - Hibernate
+      - JPA
+      - Persistence
+      - Repository
+    serviceName: Spring Data JPA
+    serviceCategory: API
+  - name: Spring Data MongoDB
+    baseURL: http://localhost:8080
+    tags:
+      - Document Database
+      - MongoDB
+      - NoSQL
+    serviceName: Spring Data MongoDB
+    serviceCategory: API
+  - name: Spring Data Redis
+    baseURL: http://localhost:8080
+    tags:
+      - Cache
+      - Key-Value Store
+      - Pub/Sub
+      - Redis
+    serviceName: Spring Data Redis
+    serviceCategory: API
+  - name: Spring Data Cassandra
+    baseURL: http://localhost:8080
+    tags:
+      - Cassandra
+      - Distributed Database
+      - NoSQL
+    serviceName: Spring Data Cassandra
+    serviceCategory: API
+  - name: Spring Data Neo4j
+    baseURL: http://localhost:8080
+    tags:
+      - Graph Database
+      - Neo4j
+      - NoSQL
+    serviceName: Spring Data Neo4j
+    serviceCategory: API
+  - name: Spring Data Elasticsearch
+    baseURL: http://localhost:8080
+    tags:
+      - Elasticsearch
+      - Full-Text Search
+      - Search Engine
+    serviceName: Spring Data Elasticsearch
+    serviceCategory: API
+unitEconomics:
+  - name: Cost per 1K Requests
+    metric: billed_cost / (api_requests / 1000)
+    target: TBD
+  - name: Cost per Active Consumer
+    metric: billed_cost / active_consumers
+    target: TBD
+maintainers:
+  - FN: Spring Team
+    email: spring-data@pivotal.io
+    X-twitter: springcentral
+    X-github: spring-projects

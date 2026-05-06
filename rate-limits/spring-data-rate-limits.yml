@@ -4,123 +4,32 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Spring Data
 providerId: spring-data
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
   - Data Access
   - Database
-  - Framework
   - Java
-  - JPA
-  - MongoDB
-  - ORM
-  - Redis
-  - REST
-  - Spring
+  - Spring Framework
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Spring Data API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: Spring Data is a self-hosted set of data-access libraries (JPA, MongoDB, Redis, REST, etc.) — there is no vendor-hosted API and therefore no vendor-imposed throughput limits. Throttling for Spring Data REST endpoints is the responsibility of the operator's surrounding gateway or Spring Security filter chain. Numeric limits are entirely operator-determined.
+sources:
+  - https://spring.io/projects/spring-data
+  - https://docs.spring.io/spring-data/rest/reference/
+notes: No vendor-imposed rate limits. Effective limits depend on whatever gateway or filter the operator places in front of Spring Data REST.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Spring Data REST
-      - Spring Data JPA
-      - Spring Data MongoDB
-      - Spring Data Redis
-      - Spring Data Cassandra
-      - Spring Data Neo4j
-      - Spring Data Elasticsearch
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Spring Data REST
-      - Spring Data JPA
-      - Spring Data MongoDB
-      - Spring Data Redis
-      - Spring Data Cassandra
-      - Spring Data Neo4j
-      - Spring Data Elasticsearch
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Spring Data REST
-      - Spring Data JPA
-      - Spring Data MongoDB
-      - Spring Data Redis
-      - Spring Data Cassandra
-      - Spring Data Neo4j
-      - Spring Data Elasticsearch
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Spring Data REST
-      - Spring Data JPA
-      - Spring Data MongoDB
-      - Spring Data Redis
-      - Spring Data Cassandra
-      - Spring Data Neo4j
-      - Spring Data Elasticsearch
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Spring Data REST
-      - Spring Data JPA
-      - Spring Data MongoDB
-      - Spring Data Redis
-      - Spring Data Cassandra
-      - Spring Data Neo4j
-      - Spring Data Elasticsearch
+  - name: Operator-Defined
+    scope: deployment
+    metric: varies
+    limit: see operator deployment configuration
+    notes: Spring Data ships no built-in throttling. Limits are imposed by the surrounding stack (API gateway, Spring Cloud Gateway, Resilience4j, or backend database connection pool).
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Self-Hosted Throttling
+    description: Spring Data does not emit Retry-After or X-RateLimit-* headers. Operators bolt on rate-limiting via filter chains or external gateways and define the response contract themselves.
+  - name: Backpressure From the Database
+    description: In practice the effective ceiling for Spring Data REST is the underlying datasource connection pool (HikariCP defaults) and the database server's own concurrency limits, not an HTTP-tier rate limiter.
 maintainers:
-  - FN: Spring Team
-    email: spring-data@pivotal.io
-    X-twitter: springcentral
-    X-github: spring-projects
+  - name: VMware Tanzu / Broadcom
+    url: https://tanzu.vmware.com/spring-runtime

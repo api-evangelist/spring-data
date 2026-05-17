@@ -43,11 +43,11 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.spring.io/spring-data/rest/docs/current/reference/html/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/spring-projects/spring-data-rest
-      - type: API Reference
+      - type: APIReference
         url: https://docs.spring.io/spring-data/rest/docs/current/api/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://spring.io/guides/gs/accessing-data-rest/
       - type: OpenAPI
         url: openapi/spring-data-rest-openapi.yml
@@ -73,9 +73,9 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.spring.io/spring-data/jpa/docs/current/reference/html/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/spring-projects/spring-data-jpa
-      - type: API Reference
+      - type: APIReference
         url: https://docs.spring.io/spring-data/jpa/docs/current/api/
       - type: Maven Repository
         url: https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa
@@ -95,9 +95,9 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/spring-projects/spring-data-mongodb
-      - type: API Reference
+      - type: APIReference
         url: https://docs.spring.io/spring-data/mongodb/docs/current/api/
       - type: Maven Repository
         url: https://mvnrepository.com/artifact/org.springframework.data/spring-data-mongodb
@@ -118,9 +118,9 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.spring.io/spring-data/redis/docs/current/reference/html/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/spring-projects/spring-data-redis
-      - type: API Reference
+      - type: APIReference
         url: https://docs.spring.io/spring-data/redis/docs/current/api/
       - type: Maven Repository
         url: https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis
@@ -140,7 +140,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.spring.io/spring-data/cassandra/docs/current/reference/html/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/spring-projects/spring-data-cassandra
       - type: Maven Repository
         url: https://mvnrepository.com/artifact/org.springframework.data/spring-data-cassandra
@@ -160,7 +160,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.spring.io/spring-data/neo4j/docs/current/reference/html/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/spring-projects/spring-data-neo4j
       - type: Maven Repository
         url: https://mvnrepository.com/artifact/org.springframework.data/spring-data-neo4j
@@ -180,7 +180,7 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/spring-projects/spring-data-elasticsearch
       - type: Maven Repository
         url: https://mvnrepository.com/artifact/org.springframework.data/spring-data-elasticsearch
@@ -189,9 +189,9 @@ common:
     url: https://spring.io/projects/spring-data
   - type: Blog
     url: https://spring.io/blog/category/data
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/spring-projects
-  - type: Stack Overflow
+  - type: StackOverflow
     url: https://stackoverflow.com/questions/tagged/spring-data
   - type: License
     url: https://www.apache.org/licenses/LICENSE-2.0
@@ -201,7 +201,7 @@ common:
     url: https://github.com/spring-projects/spring-data-commons/releases
   - type: Issues
     url: https://github.com/spring-projects/spring-data-commons/issues
-  - type: Changelog
+  - type: ChangeLog
     url: https://github.com/spring-projects/spring-data-commons/blob/main/CHANGELOG.adoc
 maintainers:
   - FN: Spring Team

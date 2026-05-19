@@ -1,0 +1,188 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Data REST API — Association
+  description: 'Spring Data REST API — Association. 3 operations. Lead operation: Get Resource Association. Self-contained
+    Naftiko capability covering one Spring Data business surface.'
+  tags:
+  - Spring Data
+  - Association
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_DATA_API_KEY: SPRING_DATA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-association
+    baseUri: http://localhost:8080
+    description: Spring Data REST API — Association business capability. Self-contained, no shared references.
+    resources:
+    - name: repository-id-association
+      path: /{repository}/{id}/{association}
+      operations:
+      - name: getassociation
+        method: GET
+        description: Get Resource Association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: repository
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: association
+          in: path
+          type: string
+          description: Association name (e.g., address, orders)
+          required: true
+      - name: setassociation
+        method: PUT
+        description: Set Resource Association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: repository
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: association
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteassociation
+        method: DELETE
+        description: Delete Resource Association
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: repository
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: association
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: rest-association-rest
+    port: 8080
+    description: REST adapter for Spring Data REST API — Association. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/{repository}/{id}/{association}
+      name: repository-id-association
+      description: REST surface for repository-id-association.
+      operations:
+      - method: GET
+        name: getassociation
+        description: Get Resource Association
+        call: rest-association.getassociation
+        with:
+          repository: rest.repository
+          id: rest.id
+          association: rest.association
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: setassociation
+        description: Set Resource Association
+        call: rest-association.setassociation
+        with:
+          repository: rest.repository
+          id: rest.id
+          association: rest.association
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteassociation
+        description: Delete Resource Association
+        call: rest-association.deleteassociation
+        with:
+          repository: rest.repository
+          id: rest.id
+          association: rest.association
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-association-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Data REST API — Association. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-resource-association
+      description: Get Resource Association
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-association.getassociation
+      with:
+        repository: tools.repository
+        id: tools.id
+        association: tools.association
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: set-resource-association
+      description: Set Resource Association
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: rest-association.setassociation
+      with:
+        repository: tools.repository
+        id: tools.id
+        association: tools.association
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-resource-association
+      description: Delete Resource Association
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-association.deleteassociation
+      with:
+        repository: tools.repository
+        id: tools.id
+        association: tools.association
+      outputParameters:
+      - type: object
+        mapping: $.

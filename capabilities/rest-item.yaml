@@ -1,0 +1,216 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Data REST API — Item
+  description: 'Spring Data REST API — Item. 4 operations. Lead operation: Get Repository Resource by ID. Self-contained Naftiko
+    capability covering one Spring Data business surface.'
+  tags:
+  - Spring Data
+  - Item
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_DATA_API_KEY: SPRING_DATA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-item
+    baseUri: http://localhost:8080
+    description: Spring Data REST API — Item business capability. Self-contained, no shared references.
+    resources:
+    - name: repository-id
+      path: /{repository}/{id}
+      operations:
+      - name: getresource
+        method: GET
+        description: Get Repository Resource by ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: repository
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+      - name: replaceresource
+        method: PUT
+        description: Replace Repository Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: repository
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: patchresource
+        method: PATCH
+        description: Patch Repository Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: repository
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteresource
+        method: DELETE
+        description: Delete Repository Resource
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: repository
+          in: path
+          type: string
+          required: true
+        - name: id
+          in: path
+          type: string
+          required: true
+  exposes:
+  - type: rest
+    namespace: rest-item-rest
+    port: 8080
+    description: REST adapter for Spring Data REST API — Item. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/{repository}/{id}
+      name: repository-id
+      description: REST surface for repository-id.
+      operations:
+      - method: GET
+        name: getresource
+        description: Get Repository Resource by ID
+        call: rest-item.getresource
+        with:
+          repository: rest.repository
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: replaceresource
+        description: Replace Repository Resource
+        call: rest-item.replaceresource
+        with:
+          repository: rest.repository
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: patchresource
+        description: Patch Repository Resource
+        call: rest-item.patchresource
+        with:
+          repository: rest.repository
+          id: rest.id
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteresource
+        description: Delete Repository Resource
+        call: rest-item.deleteresource
+        with:
+          repository: rest.repository
+          id: rest.id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-item-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Data REST API — Item. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-repository-resource-id
+      description: Get Repository Resource by ID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-item.getresource
+      with:
+        repository: tools.repository
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: replace-repository-resource
+      description: Replace Repository Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: rest-item.replaceresource
+      with:
+        repository: tools.repository
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: patch-repository-resource
+      description: Patch Repository Resource
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: rest-item.patchresource
+      with:
+        repository: tools.repository
+        id: tools.id
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: delete-repository-resource
+      description: Delete Repository Resource
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: rest-item.deleteresource
+      with:
+        repository: tools.repository
+        id: tools.id
+      outputParameters:
+      - type: object
+        mapping: $.

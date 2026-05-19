@@ -1,0 +1,109 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Spring Data REST API — Profile
+  description: 'Spring Data REST API — Profile. 2 operations. Lead operation: Get Application Profile. Self-contained Naftiko
+    capability covering one Spring Data business surface.'
+  tags:
+  - Spring Data
+  - Profile
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SPRING_DATA_API_KEY: SPRING_DATA_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rest-profile
+    baseUri: http://localhost:8080
+    description: Spring Data REST API — Profile business capability. Self-contained, no shared references.
+    resources:
+    - name: profile
+      path: /profile
+      operations:
+      - name: getprofile
+        method: GET
+        description: Get Application Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: profile-resource
+      path: /profile/{resource}
+      operations:
+      - name: getresourceprofile
+        method: GET
+        description: Get Resource Profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: resource
+          in: path
+          type: string
+          description: Repository resource name (e.g., users, products)
+          required: true
+  exposes:
+  - type: rest
+    namespace: rest-profile-rest
+    port: 8080
+    description: REST adapter for Spring Data REST API — Profile. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/profile
+      name: profile
+      description: REST surface for profile.
+      operations:
+      - method: GET
+        name: getprofile
+        description: Get Application Profile
+        call: rest-profile.getprofile
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/profile/{resource}
+      name: profile-resource
+      description: REST surface for profile-resource.
+      operations:
+      - method: GET
+        name: getresourceprofile
+        description: Get Resource Profile
+        call: rest-profile.getresourceprofile
+        with:
+          resource: rest.resource
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rest-profile-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Spring Data REST API — Profile. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-application-profile
+      description: Get Application Profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-profile.getprofile
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-resource-profile
+      description: Get Resource Profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rest-profile.getresourceprofile
+      with:
+        resource: tools.resource
+      outputParameters:
+      - type: object
+        mapping: $.

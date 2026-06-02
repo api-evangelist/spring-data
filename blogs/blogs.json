@@ -2,13 +2,10 @@
   "repo": "spring-data",
   "feeds": [
     {
-      "source": "https://spring.io/blog/category/data",
-      "feed_url": "",
-      "title": "",
-      "saved": 0,
-      "error": "no_feed"
+      "source": "https://spring.io/projects/spring-data",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-05-17T20:48:52Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 0
 }

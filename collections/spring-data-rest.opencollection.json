@@ -1,0 +1,400 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Data REST API",
+    "version": "4.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Discovery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Exported Repositories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/"
+          },
+          "docs": "Returns the root resource listing all exported Spring Data REST endpoints"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Profile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Application Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/profile"
+          },
+          "docs": "Returns the ALPS profile describing all resources and their affordances"
+        },
+        {
+          "info": {
+            "name": "Get Resource Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/profile/:resource",
+            "params": [
+              {
+                "name": "resource",
+                "value": "",
+                "type": "path",
+                "description": "Repository resource name (e.g., users, products)"
+              }
+            ]
+          },
+          "docs": "Returns the ALPS profile for a specific repository resource"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Collection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Repository Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/:repository",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path",
+                "description": "Repository resource path (e.g., users, orders)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort expression (e.g., name,asc or createdAt,desc)"
+              }
+            ]
+          },
+          "docs": "Returns a paginated collection of resources from the repository"
+        },
+        {
+          "info": {
+            "name": "Create Repository Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/:repository",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new resource in the repository"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Repository Resource by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/:repository/:id",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a single resource by its identifier"
+        },
+        {
+          "info": {
+            "name": "Replace Repository Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8080/:repository/:id",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces an existing resource entirely (full update)"
+        },
+        {
+          "info": {
+            "name": "Patch Repository Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8080/:repository/:id",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates an existing resource"
+        },
+        {
+          "info": {
+            "name": "Delete Repository Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/:repository/:id",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a resource by its identifier"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Search Methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/:repository/search",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all custom query methods exposed by the repository"
+        },
+        {
+          "info": {
+            "name": "Execute Repository Search Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/:repository/search/:method",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "method",
+                "value": "",
+                "type": "path",
+                "description": "Query method name as exposed by the repository"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Executes a custom repository query method"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Association",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Resource Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/:repository/:id/:association",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "association",
+                "value": "",
+                "type": "path",
+                "description": "Association name (e.g., address, orders)"
+              }
+            ]
+          },
+          "docs": "Returns the associated resource(s) for a given relationship"
+        },
+        {
+          "info": {
+            "name": "Set Resource Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8080/:repository/:id/:association",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "association",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Replaces the association links for a resource"
+        },
+        {
+          "info": {
+            "name": "Delete Resource Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/:repository/:id/:association",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "association",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Removes all association links for a resource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

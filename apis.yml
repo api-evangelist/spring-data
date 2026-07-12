@@ -176,6 +176,10 @@ apis:
       - type: Maven Repository
         url: https://mvnrepository.com/artifact/org.springframework.data/spring-data-elasticsearch
 common:
+  - type: VulnerabilityDisclosure
+    url: security/spring-data-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/spring-data-domain-security.yml
   - type: Website
     url: https://spring.io/projects/spring-data
   - type: Blog

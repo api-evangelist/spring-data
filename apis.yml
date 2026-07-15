@@ -176,6 +176,8 @@ apis:
       - type: Maven Repository
         url: https://mvnrepository.com/artifact/org.springframework.data/spring-data-elasticsearch
 common:
+  - type: AgenticAccess
+    url: agentic-access/spring-data-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/spring-data-vulnerability-disclosure.yml
   - type: DomainSecurity

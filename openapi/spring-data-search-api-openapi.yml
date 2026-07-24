@@ -1,0 +1,138 @@
+openapi: 3.0.3
+info:
+  title: Spring Data REST Association Search API
+  description: Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.
+  version: 4.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-data-rest
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default local server
+tags:
+- name: Search
+paths:
+  /{repository}/search:
+    get:
+      operationId: listSearchMethods
+      summary: List Search Methods
+      description: Returns all custom query methods exposed by the repository
+      tags:
+      - Search
+      parameters:
+      - name: repository
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Search methods available
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/SearchResource'
+  /{repository}/search/{method}:
+    get:
+      operationId: executeSearchMethod
+      summary: Execute Repository Search Method
+      description: Executes a custom repository query method
+      tags:
+      - Search
+      parameters:
+      - name: repository
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: method
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Query method name as exposed by the repository
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/PagedResource'
+        '404':
+          description: Search method not found
+components:
+  schemas:
+    Resource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'
+      additionalProperties: true
+    PagedResource:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Resource'
+        _links:
+          $ref: '#/components/schemas/Links'
+        page:
+          $ref: '#/components/schemas/PageMetadata'
+    PageMetadata:
+      type: object
+      properties:
+        size:
+          type: integer
+          description: Number of items per page
+        totalElements:
+          type: integer
+          description: Total number of items
+        totalPages:
+          type: integer
+          description: Total number of pages
+        number:
+          type: integer
+          description: Current page number (zero-based)
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          description: The URI of the link
+        templated:
+          type: boolean
+          description: Whether the href is a URI template
+    SearchResource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'

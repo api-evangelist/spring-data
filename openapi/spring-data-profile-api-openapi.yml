@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Spring Data REST Association Profile API
+  description: Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.
+  version: 4.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-data-rest
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default local server
+tags:
+- name: Profile
+paths:
+  /profile:
+    get:
+      operationId: getProfile
+      summary: Get Application Profile
+      description: Returns the ALPS profile describing all resources and their affordances
+      tags:
+      - Profile
+      responses:
+        '200':
+          description: ALPS profile document
+          content:
+            application/alps+json:
+              schema:
+                type: object
+  /profile/{resource}:
+    get:
+      operationId: getResourceProfile
+      summary: Get Resource Profile
+      description: Returns the ALPS profile for a specific repository resource
+      tags:
+      - Profile
+      parameters:
+      - name: resource
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Repository resource name (e.g., users, products)
+      responses:
+        '200':
+          description: Resource ALPS profile
+          content:
+            application/alps+json:
+              schema:
+                type: object

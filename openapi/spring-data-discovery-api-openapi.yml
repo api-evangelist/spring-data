@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: Spring Data REST Association Discovery API
+  description: Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.
+  version: 4.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-data-rest
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default local server
+tags:
+- name: Discovery
+paths:
+  /:
+    get:
+      operationId: listRepositories
+      summary: List All Exported Repositories
+      description: Returns the root resource listing all exported Spring Data REST endpoints
+      tags:
+      - Discovery
+      responses:
+        '200':
+          description: Root resource with links to all repositories
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/RootResource'
+components:
+  schemas:
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          description: The URI of the link
+        templated:
+          type: boolean
+          description: Whether the href is a URI template
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
+    RootResource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'

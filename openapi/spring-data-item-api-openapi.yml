@@ -1,0 +1,157 @@
+openapi: 3.0.3
+info:
+  title: Spring Data REST Association Item API
+  description: Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.
+  version: 4.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-data-rest
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default local server
+tags:
+- name: Item
+paths:
+  /{repository}/{id}:
+    get:
+      operationId: getResource
+      summary: Get Repository Resource by ID
+      description: Returns a single resource by its identifier
+      tags:
+      - Item
+      parameters:
+      - name: repository
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Resource found
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Resource not found
+    put:
+      operationId: replaceResource
+      summary: Replace Repository Resource
+      description: Replaces an existing resource entirely (full update)
+      tags:
+      - Item
+      parameters:
+      - name: repository
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Resource updated
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Resource not found
+    patch:
+      operationId: patchResource
+      summary: Patch Repository Resource
+      description: Partially updates an existing resource
+      tags:
+      - Item
+      parameters:
+      - name: repository
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+          application/merge-patch+json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Resource patched
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '404':
+          description: Resource not found
+    delete:
+      operationId: deleteResource
+      summary: Delete Repository Resource
+      description: Deletes a resource by its identifier
+      tags:
+      - Item
+      parameters:
+      - name: repository
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Resource deleted
+        '404':
+          description: Resource not found
+components:
+  schemas:
+    Resource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'
+      additionalProperties: true
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          description: The URI of the link
+        templated:
+          type: boolean
+          description: Whether the href is a URI template
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'

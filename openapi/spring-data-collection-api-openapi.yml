@@ -1,0 +1,142 @@
+openapi: 3.0.3
+info:
+  title: Spring Data REST Association Collection API
+  description: Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.
+  version: 4.3.0
+  contact:
+    name: Spring Team
+    url: https://spring.io/projects/spring-data-rest
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: http://localhost:8080
+  description: Default local server
+tags:
+- name: Collection
+paths:
+  /{repository}:
+    get:
+      operationId: listResources
+      summary: List Repository Resources
+      description: Returns a paginated collection of resources from the repository
+      tags:
+      - Collection
+      parameters:
+      - name: repository
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Repository resource path (e.g., users, orders)
+      - name: page
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+        description: Zero-based page number
+      - name: size
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 20
+        description: Number of items per page
+      - name: sort
+        in: query
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+        description: Sort expression (e.g., name,asc or createdAt,desc)
+      responses:
+        '200':
+          description: Paginated collection of resources
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/PagedResource'
+    post:
+      operationId: createResource
+      summary: Create Repository Resource
+      description: Creates a new resource in the repository
+      tags:
+      - Collection
+      parameters:
+      - name: repository
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '201':
+          description: Resource created
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL of the newly created resource
+          content:
+            application/hal+json:
+              schema:
+                $ref: '#/components/schemas/Resource'
+        '400':
+          description: Validation error
+components:
+  schemas:
+    Resource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'
+      additionalProperties: true
+    PagedResource:
+      type: object
+      properties:
+        _embedded:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              $ref: '#/components/schemas/Resource'
+        _links:
+          $ref: '#/components/schemas/Links'
+        page:
+          $ref: '#/components/schemas/PageMetadata'
+    PageMetadata:
+      type: object
+      properties:
+        size:
+          type: integer
+          description: Number of items per page
+        totalElements:
+          type: integer
+          description: Total number of items
+        totalPages:
+          type: integer
+          description: Total number of pages
+        number:
+          type: integer
+          description: Current page number (zero-based)
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          description: The URI of the link
+        templated:
+          type: boolean
+          description: Whether the href is a URI template

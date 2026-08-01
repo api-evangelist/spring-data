@@ -1,0 +1,24 @@
+{
+  "provider": "spring-data",
+  "sources": [
+    "spring-data-association-api-openapi.yml",
+    "spring-data-collection-api-openapi.yml",
+    "spring-data-discovery-api-openapi.yml",
+    "spring-data-item-api-openapi.yml",
+    "spring-data-profile-api-openapi.yml",
+    "spring-data-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "spring-data-association-api-openapi.yml",
+    "spring-data-collection-api-openapi.yml",
+    "spring-data-discovery-api-openapi.yml",
+    "spring-data-item-api-openapi.yml",
+    "spring-data-profile-api-openapi.yml",
+    "spring-data-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

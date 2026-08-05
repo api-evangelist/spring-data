@@ -80,7 +80,7 @@ terms:
   - term: Auditing
     definition: Spring Data feature that automatically tracks entity creation and modification timestamps and authors
     related:
-      - @CreatedDate
+      - "@CreatedDate"
       - "@LastModifiedBy"
     tags:
       - Core

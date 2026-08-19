@@ -22,7 +22,7 @@ image: https://spring.io/img/projects/spring-data.svg
 url: https://spring.io/projects/spring-data
 created: '2024-01-15'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 tags:
   - Data Access
   - Database

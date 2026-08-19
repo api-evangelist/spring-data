@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Data REST Association Profile API",
+    "version": "4.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Profile",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Application Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/profile"
+          },
+          "docs": "Returns the ALPS profile describing all resources and their affordances"
+        },
+        {
+          "info": {
+            "name": "Get Resource Profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/profile/:resource",
+            "params": [
+              {
+                "name": "resource",
+                "value": "",
+                "type": "path",
+                "description": "Repository resource name (e.g., users, products)"
+              }
+            ]
+          },
+          "docs": "Returns the ALPS profile for a specific repository resource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

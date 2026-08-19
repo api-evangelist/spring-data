@@ -1,0 +1,190 @@
+{
+  "item": [
+    {
+      "id": "b30b7e37-85bd-43fe-a909-d772372af08c",
+      "name": "Profile",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a217a456-1241-45bb-8ecc-3a444a2e3183",
+          "name": "Get Application Profile",
+          "request": {
+            "name": "Get Application Profile",
+            "description": {
+              "content": "Returns the ALPS profile describing all resources and their affordances",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/alps+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a51551fa-0e7b-4114-932f-124f2c5d2274",
+              "name": "ALPS profile document",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/alps+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/alps+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22ae2c55-57e6-4320-a931-3955fd613f07",
+          "name": "Get Resource Profile",
+          "request": {
+            "name": "Get Resource Profile",
+            "description": {
+              "content": "Returns the ALPS profile for a specific repository resource",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "profile",
+                ":resource"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "resource",
+                  "description": "(Required) Repository resource name (e.g., users, products)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/alps+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f61d1678-1e44-4663-afb4-b709bab06ec1",
+              "name": "Resource ALPS profile",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "profile",
+                    ":resource"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "resource",
+                      "description": "(Required) Repository resource name (e.g., users, products)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/alps+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/alps+json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "178b984e-23fa-4515-9e8e-cbb6e7579413",
+    "name": "Spring Data REST Association Profile API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

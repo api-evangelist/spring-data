@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Data REST Association Collection API",
+    "version": "4.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Repository Resources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/:repository",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path",
+                "description": "Repository resource path (e.g., users, orders)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Zero-based page number"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query",
+                "description": "Number of items per page"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort expression (e.g., name,asc or createdAt,desc)"
+              }
+            ]
+          },
+          "docs": "Returns a paginated collection of resources from the repository"
+        },
+        {
+          "info": {
+            "name": "Create Repository Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "http://localhost:8080/:repository",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new resource in the repository"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

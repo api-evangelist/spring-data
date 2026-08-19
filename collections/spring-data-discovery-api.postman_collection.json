@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "b5aad6e4-b721-40b7-8a88-0642e6062d69",
+      "name": "Discovery",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7acdc730-d511-4245-9ac3-5e2dc524d1a5",
+          "name": "List All Exported Repositories",
+          "request": {
+            "name": "List All Exported Repositories",
+            "description": {
+              "content": "Returns the root resource listing all exported Spring Data REST endpoints",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bcb61343-bca8-4fe8-ae15-9ad9b6b68ffc",
+              "name": "Root resource with links to all repositories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_2\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "92d089d0-f7a3-46b5-a89a-0aa60dc050b5",
+    "name": "Spring Data REST Association Discovery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

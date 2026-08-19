@@ -1,0 +1,318 @@
+{
+  "item": [
+    {
+      "id": "67fa1eaf-0af0-4332-9c5b-622e975500bb",
+      "name": "Collection",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c47420ea-3bb6-4ac3-b86e-b32247578a3f",
+          "name": "List Repository Resources",
+          "request": {
+            "name": "List Repository Resources",
+            "description": {
+              "content": "Returns a paginated collection of resources from the repository",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":repository"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0",
+                  "description": "Zero-based page number"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20",
+                  "description": "Number of items per page"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort expression (e.g., name,asc or createdAt,desc)"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort expression (e.g., name,asc or createdAt,desc)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repository",
+                  "description": "(Required) Repository resource path (e.g., users, orders)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "01242ce2-c881-4f65-a8a9-27e64bf19084",
+              "name": "Paginated collection of resources",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":repository"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repository",
+                      "description": "(Required) Repository resource path (e.g., users, orders)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": [\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_2\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_3\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        },\n        \"key_0\": 3207\n      },\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        },\n        \"key_0\": 7854\n      }\n    ],\n    \"key_1\": [\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      },\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        },\n        \"key_0\": 8796,\n        \"key_1\": false\n      }\n    ],\n    \"key_2\": [\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        }\n      }\n    ]\n  },\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"page\": {\n    \"size\": 4365,\n    \"totalElements\": 5169,\n    \"totalPages\": 8764,\n    \"number\": 2957\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "624c25f7-0df2-46d8-b171-163a5c6098a6",
+          "name": "Create Repository Resource",
+          "request": {
+            "name": "Create Repository Resource",
+            "description": {
+              "content": "Creates a new resource in the repository",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":repository"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repository",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": 5612.107119040085,\n  \"key_1\": 8191\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "82cad872-74c5-4d30-931b-dda063a94796",
+              "name": "Resource created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":repository"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repository",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": true,\n  \"key_1\": 3500.8072242137646,\n  \"key_2\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "URL of the newly created resource",
+                  "key": "Location",
+                  "value": "string"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  },\n  \"key_0\": false,\n  \"key_1\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06813c5f-5b5a-4ae1-879e-f79ee09f542d",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":repository"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repository",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": true,\n  \"key_1\": 3500.8072242137646,\n  \"key_2\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6af95cb8-5540-40a5-9926-d8614ef0fccb",
+    "name": "Spring Data REST Association Collection API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

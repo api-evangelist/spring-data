@@ -1,0 +1,118 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Data REST Association Item API",
+    "version": "4.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Item",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Repository Resource by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/:repository/:id",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns a single resource by its identifier"
+        },
+        {
+          "info": {
+            "name": "Replace Repository Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8080/:repository/:id",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Replaces an existing resource entirely (full update)"
+        },
+        {
+          "info": {
+            "name": "Patch Repository Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "http://localhost:8080/:repository/:id",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Partially updates an existing resource"
+        },
+        {
+          "info": {
+            "name": "Delete Repository Resource",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/:repository/:id",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Deletes a resource by its identifier"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

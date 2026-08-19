@@ -1,0 +1,325 @@
+{
+  "item": [
+    {
+      "id": "b4c96b8d-9d33-4504-91fd-f2ccfac8d994",
+      "name": "Search",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5e187cef-7c92-4e59-b024-5e3e5681fdba",
+          "name": "List Search Methods",
+          "request": {
+            "name": "List Search Methods",
+            "description": {
+              "content": "Returns all custom query methods exposed by the repository",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":repository",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repository",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d1b7785-80b9-4b47-ad8d-bf65b5c5045e",
+              "name": "Search methods available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":repository",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repository",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": true\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e88ac686-52e7-435d-bac3-636b3dea7b7e",
+          "name": "Execute Repository Search Method",
+          "request": {
+            "name": "Execute Repository Search Method",
+            "description": {
+              "content": "Executes a custom repository query method",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":repository",
+                "search",
+                ":method"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "0"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "20"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "repository",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "method",
+                  "description": "(Required) Query method name as exposed by the repository"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/hal+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e8156ab-0aed-4e36-81e3-26d960c7974f",
+              "name": "Search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":repository",
+                    "search",
+                    ":method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repository",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "method",
+                      "description": "(Required) Query method name as exposed by the repository"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/hal+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/hal+json"
+                }
+              ],
+              "body": "{\n  \"_embedded\": {\n    \"key_0\": [\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        },\n        \"key_0\": \"string\"\n      },\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_2\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      }\n    ],\n    \"key_1\": [\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        },\n        \"key_0\": \"string\",\n        \"key_1\": 6012.302777030135,\n        \"key_2\": 2479,\n        \"key_3\": 5021,\n        \"key_4\": 6283\n      },\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        },\n        \"key_0\": false\n      }\n    ],\n    \"key_2\": [\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        }\n      },\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        },\n        \"key_0\": false,\n        \"key_1\": \"string\",\n        \"key_2\": 6104\n      }\n    ],\n    \"key_3\": [\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": true\n          },\n          \"key_1\": {\n            \"href\": \"string\",\n            \"templated\": true\n          }\n        },\n        \"key_0\": 9591.979394375023,\n        \"key_1\": 7875\n      },\n      {\n        \"_links\": {\n          \"key_0\": {\n            \"href\": \"string\",\n            \"templated\": false\n          }\n        },\n        \"key_0\": 6568.003193566821,\n        \"key_1\": 8443.040780110161\n      }\n    ]\n  },\n  \"_links\": {\n    \"key_0\": {\n      \"href\": \"string\",\n      \"templated\": true\n    },\n    \"key_1\": {\n      \"href\": \"string\",\n      \"templated\": false\n    },\n    \"key_2\": {\n      \"href\": \"string\",\n      \"templated\": false\n    }\n  },\n  \"page\": {\n    \"size\": 3105,\n    \"totalElements\": 73,\n    \"totalPages\": 6802,\n    \"number\": 1471\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a7e4f212-86ad-4f6c-b2f5-2d70812fcb76",
+              "name": "Search method not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":repository",
+                    "search",
+                    ":method"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "20"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "repository",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "method",
+                      "description": "(Required) Query method name as exposed by the repository"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:8080",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8b69e765-1366-4084-85f0-caf2515db552",
+    "name": "Spring Data REST Association Search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.\n\nContact Support:\n Name: Spring Team",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Data REST Association Search API",
+    "version": "4.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Search Methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/:repository/search",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns all custom query methods exposed by the repository"
+        },
+        {
+          "info": {
+            "name": "Execute Repository Search Method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/:repository/search/:method",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "method",
+                "value": "",
+                "type": "path",
+                "description": "Query method name as exposed by the repository"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "size",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Executes a custom repository query method"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

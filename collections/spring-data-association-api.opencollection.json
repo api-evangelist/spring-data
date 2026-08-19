@@ -1,0 +1,103 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Spring Data REST Association API",
+    "version": "4.3.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Association",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Resource Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:8080/:repository/:id/:association",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "association",
+                "value": "",
+                "type": "path",
+                "description": "Association name (e.g., address, orders)"
+              }
+            ]
+          },
+          "docs": "Returns the associated resource(s) for a given relationship"
+        },
+        {
+          "info": {
+            "name": "Set Resource Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:8080/:repository/:id/:association",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "association",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Replaces the association links for a resource"
+        },
+        {
+          "info": {
+            "name": "Delete Resource Association",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "http://localhost:8080/:repository/:id/:association",
+            "params": [
+              {
+                "name": "repository",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "association",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Removes all association links for a resource"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

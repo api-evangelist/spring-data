@@ -91,6 +91,11 @@ apis:
   tags:
   - Cache
   - Key-Value Store
+  - Pub-Sub
+  - Redis
+  tags_raw:
+  - Cache
+  - Key-Value Store
   - Pub/Sub
   - Redis
   properties:
@@ -149,6 +154,10 @@ apis:
   humanURL: https://spring.io/projects/spring-data-elasticsearch
   baseURL: http://localhost:8080
   tags:
+  - Elasticsearch
+  - Full-Text Search
+  - Search Engines
+  tags_raw:
   - Elasticsearch
   - Full-Text Search
   - Search Engine

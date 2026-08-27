@@ -11,12 +11,14 @@ accessModel:
   onboarding: open
   trial: false
   try_now: false
-  public: true
+  public: false
   label: Enterprise · Open access
-  confidence: medium
+  confidence: low
+  try_now_blocked_by: loopback
   source:
   - plans
-  generated: '2026-07-22'
+  - security
+  generated: '2026-08-26'
   method: derived
 image: https://spring.io/img/projects/spring-data.svg
 url: https://spring.io/projects/spring-data

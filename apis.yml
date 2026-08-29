@@ -6,6 +6,18 @@ description: >-
   relational and non-relational databases, map-reduce frameworks, and cloud-based data services. This is an umbrella
   project which contains many subprojects that are specific to a given database.
 type: Index
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: false
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: open
@@ -303,6 +315,16 @@ apis:
   - type: JSONStructure
     url: json-structure/spring-data-hal-resource-structure.json
 common:
+  - type: IssueTracker
+    url: https://github.com/spring-projects/spring-data-jpa/issues
+  - type: Releases
+    url: https://github.com/spring-projects/spring-data-jpa/releases
+  - type: SecurityPolicy
+    url: https://github.com/spring-projects/spring-data-jpa/blob/main/SECURITY.adoc
+  - type: CodeOfConduct
+    url: https://github.com/spring-projects/.github/blob/main/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/spring-projects/spring-data-jpa/blob/main/CONTRIBUTING.adoc
   - type: AgenticAccess
     url: agentic-access/spring-data-agentic-access.yml
   - type: VulnerabilityDisclosure

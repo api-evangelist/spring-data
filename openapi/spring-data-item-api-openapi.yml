@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Spring Data REST Association Item API
   description: Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.
@@ -142,6 +142,10 @@ components:
         _links:
           $ref: '#/components/schemas/Links'
       additionalProperties: true
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
     Link:
       type: object
       properties:
@@ -151,7 +155,3 @@ components:
         templated:
           type: boolean
           description: Whether the href is a URI template
-    Links:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Link'

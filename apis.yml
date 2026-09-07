@@ -355,3 +355,5 @@ maintainers:
     X-twitter: springcentral
     X-github: spring-projects
 include: []
+x-parent: spring
+x-relationship: product

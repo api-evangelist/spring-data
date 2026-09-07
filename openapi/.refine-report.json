@@ -19,6 +19,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "spring-data-association-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-data-collection-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-data-discovery-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-data-item-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-data-profile-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "spring-data-search-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

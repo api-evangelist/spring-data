@@ -188,6 +188,8 @@ apis:
   humanURL: https://spring.io/projects/spring-data-rest
   baseURL: http://localhost:8080
   tags:
+  - Associations
+  tags_raw:
   - Association
   properties:
   - type: OpenAPI
@@ -276,6 +278,8 @@ apis:
   humanURL: https://spring.io/projects/spring-data-rest
   baseURL: http://localhost:8080
   tags:
+  - Profiles
+  tags_raw:
   - Profile
   properties:
   - type: OpenAPI

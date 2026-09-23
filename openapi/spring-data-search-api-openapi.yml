@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Spring Data REST Association Search API
+  title: Spring Data REST Search API
   description: Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.
   version: 4.3.0
   contact:
@@ -93,6 +93,10 @@ components:
         templated:
           type: boolean
           description: Whether the href is a URI template
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
     PagedResource:
       type: object
       properties:
@@ -121,18 +125,14 @@ components:
         number:
           type: integer
           description: Current page number (zero-based)
+    SearchResource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'
     Resource:
       type: object
       properties:
         _links:
           $ref: '#/components/schemas/Links'
       additionalProperties: true
-    Links:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Link'
-    SearchResource:
-      type: object
-      properties:
-        _links:
-          $ref: '#/components/schemas/Links'

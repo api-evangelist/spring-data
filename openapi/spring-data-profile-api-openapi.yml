@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Spring Data REST Association Profile API
+  title: Spring Data REST Profile API
   description: Spring Data REST exposes Spring Data repositories as hypermedia-driven RESTful resources following the HATEOAS constraint. It provides automatic endpoint generation for CRUD operations, pagination, sorting, projections, and custom query endpoints derived from repository methods.
   version: 4.3.0
   contact:

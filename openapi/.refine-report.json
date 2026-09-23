@@ -1,12 +1,7 @@
 {
   "provider": "spring-data",
   "sources": [
-    "spring-data-association-api-openapi.yml",
-    "spring-data-collection-api-openapi.yml",
-    "spring-data-discovery-api-openapi.yml",
-    "spring-data-item-api-openapi.yml",
-    "spring-data-profile-api-openapi.yml",
-    "spring-data-search-api-openapi.yml"
+    "_original/spring-data-rest-openapi.yml"
   ],
   "outputs": [
     "spring-data-association-api-openapi.yml",
@@ -20,13 +15,16 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "spring-data-association-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-data-collection-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-data-discovery-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-data-item-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-data-profile-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "spring-data-search-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "spring-data-rest-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "spring-data-association-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-data-collection-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-data-discovery-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-data-item-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-data-profile-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "spring-data-search-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

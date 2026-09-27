@@ -8,6 +8,13 @@ description: >-
 type: Index
 deliveryModel:
   model: unknown
+  license_evidence:
+    not_product:
+    - spring-projects/spring-data-cassandra
+    - spring-projects/spring-data-elasticsearch
+    - spring-projects/spring-data-jpa
+    - spring-projects/spring-data-mongodb
+    - spring-projects/spring-data-neo4j
   open_source: unknown
   commercial: false
   callable_host: false
@@ -15,8 +22,8 @@ deliveryModel:
   confidence: low
   source:
   - openapi
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: enterprise

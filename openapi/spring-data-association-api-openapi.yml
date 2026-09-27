@@ -122,10 +122,6 @@ components:
         templated:
           type: boolean
           description: Whether the href is a URI template
-    Links:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Link'
     PagedResource:
       type: object
       properties:
@@ -154,6 +150,10 @@ components:
         number:
           type: integer
           description: Current page number (zero-based)
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
     Resource:
       type: object
       properties:

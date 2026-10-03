@@ -113,15 +113,16 @@ paths:
           description: Resource not found
 components:
   schemas:
-    Link:
+    Resource:
       type: object
       properties:
-        href:
-          type: string
-          description: The URI of the link
-        templated:
-          type: boolean
-          description: Whether the href is a URI template
+        _links:
+          $ref: '#/components/schemas/Links'
+      additionalProperties: true
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
     PagedResource:
       type: object
       properties:
@@ -150,13 +151,12 @@ components:
         number:
           type: integer
           description: Current page number (zero-based)
-    Links:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Link'
-    Resource:
+    Link:
       type: object
       properties:
-        _links:
-          $ref: '#/components/schemas/Links'
-      additionalProperties: true
+        href:
+          type: string
+          description: The URI of the link
+        templated:
+          type: boolean
+          description: Whether the href is a URI template

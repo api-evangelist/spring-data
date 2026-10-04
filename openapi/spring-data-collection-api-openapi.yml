@@ -93,16 +93,19 @@ paths:
           description: Validation error
 components:
   schemas:
-    Resource:
-      type: object
-      properties:
-        _links:
-          $ref: '#/components/schemas/Links'
-      additionalProperties: true
     Links:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/Link'
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          description: The URI of the link
+        templated:
+          type: boolean
+          description: Whether the href is a URI template
     PagedResource:
       type: object
       properties:
@@ -116,6 +119,12 @@ components:
           $ref: '#/components/schemas/Links'
         page:
           $ref: '#/components/schemas/PageMetadata'
+    Resource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'
+      additionalProperties: true
     PageMetadata:
       type: object
       properties:
@@ -131,12 +140,3 @@ components:
         number:
           type: integer
           description: Current page number (zero-based)
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-          description: The URI of the link
-        templated:
-          type: boolean
-          description: Whether the href is a URI template

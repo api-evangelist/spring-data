@@ -31,15 +31,6 @@ paths:
                 $ref: '#/components/schemas/RootResource'
 components:
   schemas:
-    Link:
-      type: object
-      properties:
-        href:
-          type: string
-          description: The URI of the link
-        templated:
-          type: boolean
-          description: Whether the href is a URI template
     RootResource:
       type: object
       properties:
@@ -49,3 +40,12 @@ components:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/Link'
+    Link:
+      type: object
+      properties:
+        href:
+          type: string
+          description: The URI of the link
+        templated:
+          type: boolean
+          description: Whether the href is a URI template

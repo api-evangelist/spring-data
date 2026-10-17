@@ -136,6 +136,12 @@ paths:
           description: Resource not found
 components:
   schemas:
+    Resource:
+      type: object
+      properties:
+        _links:
+          $ref: '#/components/schemas/Links'
+      additionalProperties: true
     Link:
       type: object
       properties:
@@ -149,9 +155,3 @@ components:
       type: object
       additionalProperties:
         $ref: '#/components/schemas/Link'
-    Resource:
-      type: object
-      properties:
-        _links:
-          $ref: '#/components/schemas/Links'
-      additionalProperties: true

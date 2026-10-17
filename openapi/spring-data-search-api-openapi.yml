@@ -84,15 +84,26 @@ paths:
           description: Search method not found
 components:
   schemas:
+    PageMetadata:
+      type: object
+      properties:
+        size:
+          type: integer
+          description: Number of items per page
+        totalElements:
+          type: integer
+          description: Total number of items
+        totalPages:
+          type: integer
+          description: Total number of pages
+        number:
+          type: integer
+          description: Current page number (zero-based)
     SearchResource:
       type: object
       properties:
         _links:
           $ref: '#/components/schemas/Links'
-    Links:
-      type: object
-      additionalProperties:
-        $ref: '#/components/schemas/Link'
     Link:
       type: object
       properties:
@@ -115,24 +126,13 @@ components:
           $ref: '#/components/schemas/Links'
         page:
           $ref: '#/components/schemas/PageMetadata'
+    Links:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/Link'
     Resource:
       type: object
       properties:
         _links:
           $ref: '#/components/schemas/Links'
       additionalProperties: true
-    PageMetadata:
-      type: object
-      properties:
-        size:
-          type: integer
-          description: Number of items per page
-        totalElements:
-          type: integer
-          description: Total number of items
-        totalPages:
-          type: integer
-          description: Total number of pages
-        number:
-          type: integer
-          description: Current page number (zero-based)

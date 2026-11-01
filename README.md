@@ -1,4 +1,4 @@
-# Spring Data (spring-data)
+# Spring Data
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,204 +66,169 @@
 
 Spring Data's mission is to provide a familiar and consistent, Spring-based programming model for data access while still retaining the special traits of the underlying data store. It makes it easy to use data access technologies, relational and non-relational databases, map-reduce frameworks, and cloud-based data services. This is an umbrella project which contains many subprojects that are specific to a given database.
 
-**APIs.json:** [https://spring.io/projects/spring-data](https://spring.io/projects/spring-data)
+**Areas:** Data Access · Database · Framework · Java · JPA · MongoDB · ORM · Redis · REST · Spring
 
-## Scope
+## Spring Data on APIs.io
 
-- **Type:** Index
+Everything profiled for Spring Data is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/spring-data/](https://apis.io/providers/spring-data/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (12)
 
-- Data Access
-- Database
-- Framework
-- Java
-- JPA
-- MongoDB
-- ORM
-- Redis
-- REST
-- Spring
+- [Spring Data JPA](https://apis.io/apis/spring-data/spring-data-jpa/) — Simplifies the development of creating a JPA-based data access layer. Reduces boilerplate code and provides powerful query derivation, named queries, and…
+- [Spring Data MongoDB](https://apis.io/apis/spring-data/spring-data-mongodb/) — Provides a Spring-based programming model for MongoDB. Simplifies document operations, offers repository support, geo-spatial queries, GridFS, and full-text…
+- [Spring Data Redis](https://apis.io/apis/spring-data/spring-data-redis/) — Easy configuration and access to Redis from Spring applications. Provides low-level and high-level abstractions for storing, reading, querying data.…
+- [Spring Data Cassandra](https://apis.io/apis/spring-data/spring-data-cassandra/) — Provides Spring-based programming model and repository support for Apache Cassandra. Offers CassandraTemplate, repository abstraction, query derivation, and…
+- [Spring Data Neo4j](https://apis.io/apis/spring-data/spring-data-neo4j/) — Spring-based programming model for Neo4j graph database. Provides repository support, object-graph mapping, Cypher query derivation, and reactive Neo4j…
+- [Spring Data Elasticsearch](https://apis.io/apis/spring-data/spring-data-elasticsearch/) — Spring Data module for Elasticsearch search engine. Provides ElasticsearchTemplate, repository abstraction, index management, full-text search queries, and…
+- [Spring Data Association API](https://apis.io/apis/spring-data/spring-data-association-api/) — The Association API from Spring Data — 1 operation(s) for association.
+- [Spring Data Collection API](https://apis.io/apis/spring-data/spring-data-collection-api/) — The Collection API from Spring Data — 1 operation(s) for collection.
+- [Spring Data Discovery API](https://apis.io/apis/spring-data/spring-data-discovery-api/) — The Discovery API from Spring Data — 1 operation(s) for discovery.
+- [Spring Data Item API](https://apis.io/apis/spring-data/spring-data-item-api/) — The Item API from Spring Data — 1 operation(s) for item.
+- [Spring Data Profile API](https://apis.io/apis/spring-data/spring-data-profile-api/) — The Profile API from Spring Data — 2 operation(s) for profile.
+- [Spring Data Search API](https://apis.io/apis/spring-data/spring-data-search-api/) — The Search API from Spring Data — 2 operation(s) for search.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2024-01-15
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Spring Data REST
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Exports Spring Data repositories as hypermedia-driven RESTful resources automatically. Provides HATEOAS-compliant endpoints with HAL browser, pagination, sorting, projections, and custom event hooks.
+- [Spring Data Agentic Access](https://apis.io/agentic-access/spring-data/spring-data-agentic-access/)
 
-- **Human URL:** [https://spring.io/projects/spring-data-rest](https://spring.io/projects/spring-data-rest)
-- **Base URL:** `http://localhost:8080`
+#### JSON Schema (1)
 
-#### Tags
+The data models the API reads and writes.
 
-- HATEOAS
-- HAL
-- Hypermedia
-- Repository
-- REST
+- [Spring Data Paged Resource](https://apis.io/schemas/spring-data/spring-data-paged-resource/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://docs.spring.io/spring-data/rest/docs/current/reference/html/)
-- [GitHub Repository](https://github.com/spring-projects/spring-data-rest)
-- [API Reference](https://docs.spring.io/spring-data/rest/docs/current/api/)
-- [Getting Started](https://spring.io/guides/gs/accessing-data-rest/)
-- [OpenAPI](openapi/spring-data-rest-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/spring-data-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-data-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/spring-data-paged-resource-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/spring-data-hal-resource-structure.json)
+Data models expressed in JSON Structure.
 
-### Spring Data JPA
+- [Spring Data Hal Resource Structure](https://apis.io/json-structure/spring-data/spring-data-hal-resource-structure/)
 
-Simplifies the development of creating a JPA-based data access layer. Reduces boilerplate code and provides powerful query derivation, named queries, and specification-based querying on top of JPA/Hibernate.
+#### JSON-LD (1)
 
-- **Human URL:** [https://spring.io/projects/spring-data-jpa](https://spring.io/projects/spring-data-jpa)
-- **Base URL:** `http://localhost:8080`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Spring Data Context](https://apis.io/jsonld/spring-data/spring-data-context/)
 
-- Database
-- Hibernate
-- JPA
-- Persistence
-- Repository
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/)
-- [GitHub Repository](https://github.com/spring-projects/spring-data-jpa)
-- [API Reference](https://docs.spring.io/spring-data/jpa/docs/current/api/)
-- [Maven  Repository](https://mvnrepository.com/artifact/org.springframework.data/spring-data-jpa)
-- [Postman Collection](collections/spring-data-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-data-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Spring Data Vocabulary](https://apis.io/vocabularies/spring-data/spring-data-vocabulary/)
 
-### Spring Data MongoDB
+#### Examples (1)
 
-Provides a Spring-based programming model for MongoDB. Simplifies document operations, offers repository support, geo-spatial queries, GridFS, and full-text search integration with Spring's template pattern.
+Example requests and responses.
 
-- **Human URL:** [https://spring.io/projects/spring-data-mongodb](https://spring.io/projects/spring-data-mongodb)
-- **Base URL:** `http://localhost:8080`
+- [Spring Data List Resources Example](https://apis.io/examples/spring-data/spring-data-list-resources-example/)
 
-#### Tags
+#### Collections (7)
 
-- Document Database
-- MongoDB
-- NoSQL
+Postman and Open Collection request collections.
 
-#### Properties
+- [Spring Data REST Association API](https://apis.io/collections/spring-data/open-spring-data-association-api/)
+- [Spring Data REST Association Collection API](https://apis.io/collections/spring-data/open-spring-data-collection-api/)
+- [Spring Data REST Association Discovery API](https://apis.io/collections/spring-data/open-spring-data-discovery-api/)
+- [Spring Data REST Association Item API](https://apis.io/collections/spring-data/open-spring-data-item-api/)
+- [Spring Data REST Association Profile API](https://apis.io/collections/spring-data/open-spring-data-profile-api/)
+- [Spring Data REST API](https://apis.io/collections/spring-data/open-spring-data-rest/)
+- [Spring Data REST Association Search API](https://apis.io/collections/spring-data/open-spring-data-search-api/)
 
-- [Documentation](https://docs.spring.io/spring-data/mongodb/docs/current/reference/html/)
-- [GitHub Repository](https://github.com/spring-projects/spring-data-mongodb)
-- [API Reference](https://docs.spring.io/spring-data/mongodb/docs/current/api/)
-- [Maven  Repository](https://mvnrepository.com/artifact/org.springframework.data/spring-data-mongodb)
-- [Postman Collection](collections/spring-data-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-data-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (2)
 
-### Spring Data Redis
+Spectral rulesets for the provider's contracts.
 
-Easy configuration and access to Redis from Spring applications. Provides low-level and high-level abstractions for storing, reading, querying data. Supports both reactive and imperative programming models.
+- [Spring Data — jsonschema rules](https://apis.io/rules/spring-data/spring-data-jsonschema-spectral-rules/)
+- [Spring Data API Rules](https://apis.io/rules/spring-data/spring-data-rules/)
 
-- **Human URL:** [https://spring.io/projects/spring-data-redis](https://spring.io/projects/spring-data-redis)
-- **Base URL:** `http://localhost:8080`
+#### Security (2)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Cache
-- Key-Value Store
-- Pub/Sub
-- Redis
+- [Spring Data Domain Security](https://apis.io/security/spring-data/spring-data-domain-security/)
+- [Spring Data Vulnerability Disclosure](https://apis.io/security/spring-data/spring-data-vulnerability-disclosure/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://docs.spring.io/spring-data/redis/docs/current/reference/html/)
-- [GitHub Repository](https://github.com/spring-projects/spring-data-redis)
-- [API Reference](https://docs.spring.io/spring-data/redis/docs/current/api/)
-- [Maven  Repository](https://mvnrepository.com/artifact/org.springframework.data/spring-data-redis)
-- [Postman Collection](collections/spring-data-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-data-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-### Spring Data Cassandra
+- [Spring Data Plans Pricing](https://apis.io/plans/spring-data/spring-data-plans-pricing/)
 
-Provides Spring-based programming model and repository support for Apache Cassandra. Offers CassandraTemplate, repository abstraction, query derivation, and reactive programming support with Project Reactor.
+#### Rate limits (1)
 
-- **Human URL:** [https://spring.io/projects/spring-data-cassandra](https://spring.io/projects/spring-data-cassandra)
-- **Base URL:** `http://localhost:8080`
+Published request limits.
 
-#### Tags
+- [Spring Data Rate Limits](https://apis.io/rate-limits/spring-data/spring-data-rate-limits/)
 
-- Cassandra
-- Distributed Database
-- NoSQL
+#### FinOps (1)
 
-#### Properties
+What the API costs to run, by operation.
 
-- [Documentation](https://docs.spring.io/spring-data/cassandra/docs/current/reference/html/)
-- [GitHub Repository](https://github.com/spring-projects/spring-data-cassandra)
-- [Maven  Repository](https://mvnrepository.com/artifact/org.springframework.data/spring-data-cassandra)
-- [Postman Collection](collections/spring-data-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-data-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Spring Data Finops](https://apis.io/finops/spring-data/spring-data-finops/)
 
-### Spring Data Neo4j
+## Where to find this API
 
-Spring-based programming model for Neo4j graph database. Provides repository support, object-graph mapping, Cypher query derivation, and reactive Neo4j integration with full Spring ecosystem compatibility.
-
-- **Human URL:** [https://spring.io/projects/spring-data-neo4j](https://spring.io/projects/spring-data-neo4j)
-- **Base URL:** `http://localhost:8080`
-
-#### Tags
-
-- Graph Database
-- Neo4j
-- NoSQL
-
-#### Properties
-
-- [Documentation](https://docs.spring.io/spring-data/neo4j/docs/current/reference/html/)
-- [GitHub Repository](https://github.com/spring-projects/spring-data-neo4j)
-- [Maven  Repository](https://mvnrepository.com/artifact/org.springframework.data/spring-data-neo4j)
-- [Postman Collection](collections/spring-data-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-data-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Spring Data Elasticsearch
-
-Spring Data module for Elasticsearch search engine. Provides ElasticsearchTemplate, repository abstraction, index management, full-text search queries, and reactive Elasticsearch client support.
-
-- **Human URL:** [https://spring.io/projects/spring-data-elasticsearch](https://spring.io/projects/spring-data-elasticsearch)
-- **Base URL:** `http://localhost:8080`
-
-#### Tags
-
-- Elasticsearch
-- Full-Text Search
-- Search Engine
-
-#### Properties
-
-- [Documentation](https://docs.spring.io/spring-data/elasticsearch/docs/current/reference/html/)
-- [GitHub Repository](https://github.com/spring-projects/spring-data-elasticsearch)
-- [Maven  Repository](https://mvnrepository.com/artifact/org.springframework.data/spring-data-elasticsearch)
-- [Postman Collection](collections/spring-data-rest.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/spring-data-rest.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://spring.io/projects/spring-data)
-- [Blog](https://spring.io/blog/category/data)
-- [GitHub Organization](https://github.com/spring-projects)
-- [Stack Overflow](https://stackoverflow.com/questions/tagged/spring-data)
-- [License](https://www.apache.org/licenses/LICENSE-2.0)
-- [Maven  Repository](https://mvnrepository.com/search?q=spring-data)
-- [Releases](https://github.com/spring-projects/spring-data-commons/releases)
-- [Issues](https://github.com/spring-projects/spring-data-commons/issues)
 - [Changelog](https://github.com/spring-projects/spring-data-commons/blob/main/CHANGELOG.adoc)
+- [Blog](https://spring.io/blog/category/data)
+- [GitHub](https://github.com/spring-projects)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Spring Team
-**Email:** spring-data@pivotal.io
+**Kin Score 29.8** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 52.3 |
+| Contract governance | 13.6 |
+| Operational transparency | 18.4 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 5.3 |
+
+**Agent readiness 15.4** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/spring-data/](https://apis.io/providers/spring-data/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Spring Data: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/spring-data/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
